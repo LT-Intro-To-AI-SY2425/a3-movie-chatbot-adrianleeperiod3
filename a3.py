@@ -247,9 +247,15 @@ def search_pa_list(src: List[str]) -> List[str]:
         a list of answers. Will be ["I don't understand"] if it finds no matches and
         ["No answers"] if it finds a match but no answers
     """
-    pind = 0
-    sind = 0
-    for list in pa_list:
+    for pat, act in pa_list:
+        val = match(pat, src)
+        if val != None:
+            print(act)
+            result = act(val)
+            return result
+        else:
+            return "I don't understand"
+            
 
 
 
