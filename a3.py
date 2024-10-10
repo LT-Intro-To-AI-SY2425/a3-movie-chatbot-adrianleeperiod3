@@ -248,13 +248,15 @@ def search_pa_list(src: List[str]) -> List[str]:
         ["No answers"] if it finds a match but no answers
     """
     for pat, act in pa_list:
-        val = match(pat, src)
+        val = match(pat,src)
         if val != None:
-            print(act)
-            result = act(val)
-            return result
+            if act(val) != None:
+                return act(val)
+            else: 
+                return ["No answers"]
         else:
-            return "I don't understand"
+            return ["I don't understand"]
+        
             
 
 
